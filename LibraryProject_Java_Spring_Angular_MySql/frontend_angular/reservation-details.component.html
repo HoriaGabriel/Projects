@@ -1,0 +1,83 @@
+<div *ngIf="viewMode; else editable">
+  <div *ngIf="currentBook.id">
+    <h4>Book</h4>
+    <div>
+      <label><strong>Name:</strong></label> {{ currentBook.name }}
+    </div>
+    <div>
+      <label><strong>ISBN:</strong></label>
+      {{ currentBook.isbn }}
+    </div>
+    <div>
+      <label><strong>Available:</strong></label>
+      {{ currentBook.available }}
+    </div>
+    <div>
+      <label><strong>Genre:</strong></label>
+      {{ currentBook.genre }}
+    </div>
+    <div>
+      <label><strong>Publisher:</strong></label>
+      {{ currentBook.publisher }}
+    </div>
+    <div>
+      <label><strong>Author:</strong></label>
+      {{ currentBook.author }}
+    </div>
+<!--    <button class="badge badge-warning" (click)="saveReservation()">-->
+<!--      Reserve-->
+<!--    </button>-->
+    <a
+      class="badge badge-warning"
+      routerLink="reserve/{{ currentBook.id }}"
+    >
+      Reserve
+    </a>
+  </div>
+
+  <div *ngIf="!currentBook">
+    <br />
+    <p>Please click on a Book...</p>
+  </div>
+</div>
+
+<ng-template #editable>
+  <div *ngIf="currentBook.id" class="edit-form">
+    <h4>Reservation</h4>
+    <form>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          [(ngModel)]="currentBook.name"
+          name="name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="currentUser">UserName</label>
+        <input
+          type="text"
+          class="form-control"
+          id="currentUser"
+          [(ngModel)]="currentUser"
+          name="currentUser"
+        />
+      </div>
+    </form>
+
+
+    <button class="badge badge-danger mr-2" (click)="saveReservation()">
+      makeReservation
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentBook.id">
+    <br />
+    <p>Cannot access this Book...</p>
+  </div>
+</ng-template>
+

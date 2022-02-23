@@ -1,0 +1,27 @@
+<div class="list row">
+  <div class="col-md-8">
+  </div>
+  <div class="col-md-6">
+    <h4>Reservations List</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let reservation of reservations; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveReservation(reservation, i)"
+      >
+        {{ reservation.book }}
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="currentReservation.id">
+    <h4>Reservation</h4>
+    <div>
+      <label><strong>BookName:</strong></label> {{ currentReservation.book }}
+    </div>
+    <div>
+      <label><strong>Status:</strong></label>
+      {{ currentReservation.status ? "Returned" : "NotReturned"}}
+    </div>
+  </div>
+</div>

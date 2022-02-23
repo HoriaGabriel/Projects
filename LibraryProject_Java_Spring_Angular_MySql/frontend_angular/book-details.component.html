@@ -1,0 +1,124 @@
+<div *ngIf="viewMode; else editable">
+  <div *ngIf="currentBook.id">
+    <h4>Book</h4>
+    <div>
+      <label><strong>Name:</strong></label> {{ currentBook.name }}
+    </div>
+    <div>
+      <label><strong>ISBN:</strong></label>
+      {{ currentBook.isbn }}
+    </div>
+    <div>
+      <label><strong>Available:</strong></label>
+      {{ currentBook.available }}
+    </div>
+    <div>
+      <label><strong>Genre:</strong></label>
+      {{ currentBook.genre }}
+    </div>
+    <div>
+      <label><strong>Publisher:</strong></label>
+      {{ currentBook.publisher }}
+    </div>
+    <div>
+      <label><strong>Author:</strong></label>
+      {{ currentBook.author }}
+    </div>
+    <a
+      class="badge badge-warning"
+      routerLink="books/{{ currentBook.id }}"
+    >
+      Edit
+    </a>
+  </div>
+
+  <div *ngIf="!currentBook">
+    <br />
+    <p>Please click on a Book...</p>
+  </div>
+</div>
+
+<ng-template #editable>
+  <div *ngIf="currentBook.id" class="edit-form">
+    <h4>Book</h4>
+    <form>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          [(ngModel)]="currentBook.name"
+          name="name"
+        />
+      </div>
+      <div class="form-group">
+        <label for="isbn">Isbn</label>
+        <input
+          type="text"
+          class="form-control"
+          id="isbn"
+          [(ngModel)]="currentBook.isbn"
+          name="isbn"
+        />
+      </div>
+      <div class="form-group">
+        <label for="available">Available</label>
+        <input
+          type="text"
+          class="form-control"
+          id="available"
+          [(ngModel)]="currentBook.available"
+          name="available"
+        />
+      </div>
+      <div class="form-group">
+        <label for="genre">Genre</label>
+        <input
+          type="text"
+          class="form-control"
+          id="genre"
+          [(ngModel)]="currentBook.genre"
+          name="genre"
+        />
+      </div>
+      <div class="form-group">
+        <label for="publisher">Publisher</label>
+        <input
+          type="text"
+          class="form-control"
+          id="publisher"
+          [(ngModel)]="currentBook.publisher"
+          name="publisher"
+        />
+      </div>
+      <div class="form-group">
+        <label for="author">Author</label>
+        <input
+          type="text"
+          class="form-control"
+          id="author"
+          [(ngModel)]="currentBook.author"
+          name="author"
+        />
+      </div>
+    </form>
+    <button class="badge badge-danger mr-2" (click)="deleteBook()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateBook()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentBook.id">
+    <br />
+    <p>Cannot access this Book...</p>
+  </div>
+</ng-template>

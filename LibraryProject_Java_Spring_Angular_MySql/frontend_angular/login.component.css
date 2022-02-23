@@ -1,0 +1,30 @@
+#num2{
+  background-color: bisque;
+  margin: 100px;
+  width: 600px;
+  height: 280px;
+  left: 15%;
+}
+
+#num3{
+  width: 50%;
+  position: relative;
+  left: 25%;
+}
+
+#num4{
+  width: 50%;
+  position: relative;
+  left: 25%;
+}
+
+#num5{
+  width: 50%;
+  position: relative;
+  left: 25%;
+}
+
+#aux{
+  background-color: dimgray;
+  left: 15%;
+}
